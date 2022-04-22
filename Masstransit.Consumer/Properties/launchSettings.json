@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Masstransit.Consumer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

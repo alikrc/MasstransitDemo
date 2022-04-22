@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  masstransitdemo.api:
+    image: ${DOCKER_REGISTRY-}masstransitdemoapi
+    build:
+      context: .
+      dockerfile: MasstransitDemo.Api/Dockerfile
+      
+  #masstransitdemo.consumer:
+  #  image: ${DOCKER_REGISTRY-}masstransitdemoconsumer
+  #  build:
+  #    context: .
+  #    dockerfile: MasstransitDemo.Consumer/Dockerfile
+
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:management
+    ports:
+        - '5672:5672'
+        - '15672:15672'
