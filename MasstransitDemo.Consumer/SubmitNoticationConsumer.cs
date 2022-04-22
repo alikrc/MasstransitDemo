@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using MasstransitDemo.Shared;
 
-namespace Masstransit.Consumer
+namespace MasstransitDemo.Consumer
 {
     public class SubmitNoticationConsumer : IConsumer<INotificationSubmitted>
     {

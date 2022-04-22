@@ -1,6 +1,6 @@
 ﻿using MasstransitDemo.Shared;
 
-namespace Masstransit.Consumer
+namespace MasstransitDemo.Consumer
 {
     public class NotificationProcessor : INotificationProcessor
     {

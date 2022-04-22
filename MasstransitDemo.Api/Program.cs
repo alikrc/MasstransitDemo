@@ -17,11 +17,7 @@ services.AddMassTransit(busConfigurator =>
     busConfigurator.SetKebabCaseEndpointNameFormatter();
     busConfigurator.UsingRabbitMq((context, busFactoryConfigurator) =>
     {
-        busFactoryConfigurator.Host("rabbitmq", hostConfigurator =>
-        {
-            //hostConfigurator.Username("guest");
-            //hostConfigurator.Password("guest");
-        });
+        busFactoryConfigurator.Host("rabbitmq", hostConfigurator => { });
 
         busFactoryConfigurator.ConnectPublishObserver(context.GetRequiredService<IPublishObserver>());
     });
@@ -31,8 +27,7 @@ services.AddMassTransit(busConfigurator =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }

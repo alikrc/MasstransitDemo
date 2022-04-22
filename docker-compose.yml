@@ -6,16 +6,23 @@ services:
     build:
       context: .
       dockerfile: MasstransitDemo.Api/Dockerfile
-      
-  #masstransitdemo.consumer:
-  #  image: ${DOCKER_REGISTRY-}masstransitdemoconsumer
-  #  build:
-  #    context: .
-  #    dockerfile: MasstransitDemo.Consumer/Dockerfile
+    ports:
+        - '7047:443'
+        - '7048:80'     
 
   rabbitmq:
     container_name: "rabbitmq"
     image: rabbitmq:management
+    hostname: "rabbitmq"
     ports:
         - '5672:5672'
         - '15672:15672'
+
+  masstransit.consumer:
+    image: ${DOCKER_REGISTRY-}masstransitconsumer
+    build:
+      context: .
+      dockerfile: MasstransitDemo.Consumer/Dockerfile
+    depends_on:
+      - "rabbitmq"
+

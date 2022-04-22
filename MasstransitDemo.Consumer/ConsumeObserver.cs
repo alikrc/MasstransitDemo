@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using MassTransit.Util;
 
-namespace Masstransit.Consumer;
+namespace MasstransitDemo.Consumer;
 
 public class ConsumeObserver : IConsumeObserver
 {
