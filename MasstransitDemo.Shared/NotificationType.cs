@@ -1,9 +1,8 @@
-﻿namespace MasstransitDemo.Shared
+﻿namespace MasstransitDemo.Shared;
+
+public enum NotificationType
 {
-    public enum NotificationType
-    {
-        Email,
-        Push,
-        Sms
-    }
+    Email,
+    Push,
+    Sms
 }

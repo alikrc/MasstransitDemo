@@ -11,7 +11,7 @@
   "profiles": {
     "MasstransitDemo.Api": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,7 +21,7 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -29,7 +29,7 @@
     },
     "Docker": {
       "commandName": "Docker",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": false,
       "environmentVariables": {

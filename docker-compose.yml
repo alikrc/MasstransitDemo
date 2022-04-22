@@ -9,9 +9,11 @@ services:
     ports:
         - '7047:443'
         - '7048:80'     
+    depends_on:
+      - "rabbitmq"
 
   rabbitmq:
-    container_name: "rabbitmq"
+    container_name: "rabbitmqcontainer"
     image: rabbitmq:management
     hostname: "rabbitmq"
     ports:
@@ -25,4 +27,3 @@ services:
       dockerfile: MasstransitDemo.Consumer/Dockerfile
     depends_on:
       - "rabbitmq"
-
