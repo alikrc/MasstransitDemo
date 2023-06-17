@@ -21,4 +21,10 @@
     <ProjectReference Include="..\MasstransitDemo.Shared\MasstransitDemo.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
+  </ItemGroup>
+
 </Project>
