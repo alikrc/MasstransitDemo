@@ -1,29 +1,40 @@
 version: '3.4'
-
 services:
-  masstransitdemo.api:
-    image: ${DOCKER_REGISTRY-}masstransitdemoapi
-    build:
-      context: .
-      dockerfile: MasstransitDemo.Api/Dockerfile
-    ports:
-        - '7047:443'
-        - '7048:80'     
-    depends_on:
-      - "rabbitmq"
-
   rabbitmq:
-    container_name: "rabbitmqcontainer"
+    container_name: "masstransitdemo.rabbitmq"
     image: rabbitmq:management
     hostname: "rabbitmq"
     ports:
-        - '5672:5672'
-        - '15672:15672'
+      - '5672:5672'
+      - '15672:15672'
 
-  masstransit.consumer:
+  masstransitdemo.consumer:
+    container_name: "masstransitdemo.consumer"
     image: ${DOCKER_REGISTRY-}masstransitconsumer
+    restart: on-failure
     build:
       context: .
       dockerfile: MasstransitDemo.Consumer/Dockerfile
     depends_on:
       - "rabbitmq"
+  
+  masstransitdemo.api:
+    container_name: "masstransitdemo.api"
+    image: ${DOCKER_REGISTRY-}masstransitdemoapi
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: MasstransitDemo.Api/Dockerfile
+    ports:
+      - '7048:80'
+      - '7047:443'
+    depends_on:
+      - "rabbitmq"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_HTTPS_PORT=7047
+    volumes:
+      - ~/.aspnet/https:/https:ro
